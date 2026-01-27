@@ -5,7 +5,10 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    container: image: returntocorp/semgrep
+    container:
+      image: returntocorp/semgrep
     steps:
-      - uses: actions/checkout@v1
-      - run: semgrep scan --config=auto --error
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Semgrep
+        run: semgrep scan --config=auto --error
