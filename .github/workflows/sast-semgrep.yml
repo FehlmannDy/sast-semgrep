@@ -1,4 +1,4 @@
-name: FehlmannDy SAST
+name: FehlmannDy SAST Pro
 on:
   workflow_call:
 
@@ -7,8 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: returntocorp/semgrep
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Run Semgrep
-        run: semgrep scan --config=auto --error
+      
+      - name: Run Semgrep CI (Pro Rules)
+        run: semgrep ci
