@@ -1,0 +1,11 @@
+name: FehlmannDy SAST
+on:
+  workflow_call:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    container: image: returntocorp/semgrep
+    steps:
+      - uses: actions/checkout@v1
+      - run: semgrep scan --config=auto --error
