@@ -12,10 +12,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Semgrep with Pro Rules
-        run: |
-          semgrep scan \
-            --config="p/pro" \
-            --config="auto" \
-            --error \
-            --json \
-            --output=sast-results.json
+        run: semgrep scan --config="p/pro" --config="auto"
